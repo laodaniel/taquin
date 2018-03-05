@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
 import styles from './styles.css';
-import Piece from './piece';
+import Tile from './tile';
 
-const PIECES_COUNT = 25;
-const COLUMNS_COUNT = Math.sqrt(PIECES_COUNT);
+const TILES_COUNT = 25;
+const COLUMNS_COUNT = Math.sqrt(TILES_COUNT);
 const ROW_HEIGHT = `${100 / COLUMNS_COUNT}vw`;
 
-const board = Array.from(Array(PIECES_COUNT).keys());
+const board = Array.from(Array(TILES_COUNT).keys());
 const shuffledBoard = board.sort(() => Math.random() - 0.5);
 
 class Board extends Component {
@@ -38,14 +38,14 @@ class Board extends Component {
   };
 
   getTileIndex = tileValue =>
-    this.state.shuffledBoard.findIndex(number => number === tileValue);
+    this.state.shuffledBoard.findIndex(value => value === tileValue);
 
   render() {
     const {shuffledBoard} = this.state;
     return (
       <section className={styles.board}>
-        {shuffledBoard.map((piece, index) => (
-          <Piece key={index} number={piece} onClick={this.onTileClick} />
+        {shuffledBoard.map(tile => (
+          <Tile key={tile} value={tile} onClick={this.onTileClick} />
         ))}
       </section>
     );

@@ -2,25 +2,25 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import styles from './styles.css';
 
-class Piece extends Component {
+class Tile extends Component {
   static defaultProps = {
-    number: 0,
+    value: 0,
   };
 
   static propTypes = {
-    number: PropTypes.number.isRequired,
+    value: PropTypes.number.isRequired,
     onClick: PropTypes.func.isRequired,
   };
 
   render() {
-    const {number, onClick} = this.props;
-    const className = number === 0 ? styles.piece__hole : styles.piece;
+    const {value, onClick} = this.props;
+    const className = value === 0 ? styles.tile__hole : styles.tile;
     return (
       <div onClick={onClick} data-index={1} className={className}>
-        {number}
+        {value}
       </div>
     );
   }
 }
 
-export default Piece;
+export default Tile;

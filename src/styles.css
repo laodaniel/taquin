@@ -9,7 +9,7 @@
   grid-gap: 2px;
 }
 
-.piece {
+.tile {
   width: 100%;
   height: var(--row-height);
   line-height: var(--row-height);
@@ -19,7 +19,7 @@
   color: #fff;
 }
 
-.piece__hole {
-  composes: piece;
+.tile__hole {
+  composes: tile;
   background-color: #fff;
 }
