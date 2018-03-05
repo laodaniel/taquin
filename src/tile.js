@@ -2,9 +2,11 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import styles from './styles.css';
 
+const HOLE_VALUE = 0;
+
 class Tile extends Component {
   static defaultProps = {
-    value: 0,
+    value: HOLE_VALUE,
   };
 
   static propTypes = {
@@ -14,7 +16,7 @@ class Tile extends Component {
 
   render() {
     const {value, onClick} = this.props;
-    const className = value === 0 ? styles.tile__hole : styles.tile;
+    const className = value === HOLE_VALUE ? styles.tile__hole : styles.tile;
     return (
       <div onClick={onClick} data-index={1} className={className}>
         {value}

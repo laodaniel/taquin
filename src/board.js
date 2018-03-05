@@ -5,6 +5,7 @@ import Tile from './tile';
 const TILES_COUNT = 25;
 const COLUMNS_COUNT = Math.sqrt(TILES_COUNT);
 const ROW_HEIGHT = `${100 / COLUMNS_COUNT}vw`;
+const HOLE_VALUE = 0;
 
 const board = Array.from(Array(TILES_COUNT).keys());
 const shuffledBoard = board.sort(() => Math.random() - 0.5);
@@ -33,28 +34,32 @@ class Board extends Component {
       this.isHoleAbove(value) ||
       this.isHoleBelow(value)
     ) {
-      this.swapTiles(0, value);
+      this.swapTiles(HOLE_VALUE, value);
     }
   };
 
   isHoleAtTheLeft = value => {
     const selectedTileIndex = this.getTileIndex(value);
-    return this.state.shuffledBoard[selectedTileIndex - 1] === 0;
+    return this.isHole(selectedTileIndex - 1);
   };
 
   isHoleAtTheRight = value => {
     const selectedTileIndex = this.getTileIndex(value);
-    return this.state.shuffledBoard[selectedTileIndex + 1] === 0;
+    return this.isHole(selectedTileIndex + 1);
   };
 
   isHoleAbove = value => {
     const selectedTileIndex = this.getTileIndex(value);
-    return this.state.shuffledBoard[selectedTileIndex + COLUMNS_COUNT] === 0;
+    return this.isHole(selectedTileIndex + COLUMNS_COUNT);
   };
 
   isHoleBelow = value => {
     const selectedTileIndex = this.getTileIndex(value);
-    return this.state.shuffledBoard[selectedTileIndex - COLUMNS_COUNT] === 0;
+    return this.isHole(selectedTileIndex - COLUMNS_COUNT);
+  };
+
+  isHole = value => {
+    return this.state.shuffledBoard[value] === HOLE_VALUE;
   };
 
   swapTiles = (value1, value2) => {
