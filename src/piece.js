@@ -2,9 +2,8 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
 class Piece extends Component {
-  
   static defaultProps = {
-    number: 0
+    number: 0,
   };
 
   static propTypes = {
