@@ -1,0 +1,8 @@
+:root {
+  --columns-count: 4;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(var(--columns-count), auto);
+}

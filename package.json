@@ -1,0 +1,38 @@
+{
+  "name": "taquin",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "format": "prettier --write './src/**/*.{js,json}'",
+    "precommit": "yarn test && yarn run format",
+    "start": "parcel index.html",
+    "build": "parcel build index.js",
+    "test": "jest"
+  },
+  "jest": {
+    "setupTestFrameworkScriptFile": "<rootDir>/test/setup-tests.js",
+    "moduleNameMapper": {
+      "\\.(css)$": "<rootDir>/node_modules/jest-css-modules"
+    }
+  },
+  "devDependencies": {
+    "autoprefixer": "^8.1.0",
+    "babel-core": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "husky": "^0.14.3",
+    "jest": "^22.4.2",
+    "jest-css-modules": "^1.1.0",
+    "parcel-bundler": "^1.6.2",
+    "postcss": "^6.0.19",
+    "postcss-modules": "^1.1.0",
+    "prettier": "^1.11.1",
+    "prop-types": "^15.6.1",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0"
+  }
+}
