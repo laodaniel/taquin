@@ -27,7 +27,34 @@ class Board extends Component {
 
   onTileClick = event => {
     const value = parseInt(event.currentTarget.innerHTML, 10);
-    this.swapTiles(0, value);
+    if (
+      this.isHoleAtTheLeft(value) ||
+      this.isHoleAtTheRight(value) ||
+      this.isHoleAbove(value) ||
+      this.isHoleBelow(value)
+    ) {
+      this.swapTiles(0, value);
+    }
+  };
+
+  isHoleAtTheLeft = value => {
+    const selectedTileIndex = this.getTileIndex(value);
+    return this.state.shuffledBoard[selectedTileIndex - 1] === 0;
+  };
+
+  isHoleAtTheRight = value => {
+    const selectedTileIndex = this.getTileIndex(value);
+    return this.state.shuffledBoard[selectedTileIndex + 1] === 0;
+  };
+
+  isHoleAbove = value => {
+    const selectedTileIndex = this.getTileIndex(value);
+    return this.state.shuffledBoard[selectedTileIndex + COLUMNS_COUNT] === 0;
+  };
+
+  isHoleBelow = value => {
+    const selectedTileIndex = this.getTileIndex(value);
+    return this.state.shuffledBoard[selectedTileIndex - COLUMNS_COUNT] === 0;
   };
 
   swapTiles = (value1, value2) => {
