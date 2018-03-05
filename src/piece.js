@@ -9,12 +9,17 @@ class Piece extends Component {
 
   static propTypes = {
     number: PropTypes.number.isRequired,
+    onClick: PropTypes.func.isRequired,
   };
 
   render() {
-    const {number} = this.props;
+    const {number, onClick} = this.props;
     const className = number === 0 ? styles.piece__hole : styles.piece;
-    return <div className={className}>{number}</div>;
+    return (
+      <div onClick={onClick} data-index={1} className={className}>
+        {number}
+      </div>
+    );
   }
 }
 
