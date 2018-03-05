@@ -13,7 +13,8 @@ class Piece extends Component {
 
   render() {
     const {number} = this.props;
-    return <div className={styles.piece}>{number}</div>;
+    const className = number === 0 ? styles.piece__hole : styles.piece;
+    return <div className={className}>{number}</div>;
   }
 }
 
