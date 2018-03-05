@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
+import styles from './styles.css';
 
 class Piece extends Component {
   static defaultProps = {
@@ -12,7 +13,7 @@ class Piece extends Component {
 
   render() {
     const {number} = this.props;
-    return <div>{number}</div>;
+    return <div className={styles.piece}>{number}</div>;
   }
 }
 

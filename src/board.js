@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
-import style from './board.css';
+import styles from './styles.css';
 import Piece from './piece';
 
-const PIECES_COUNT = 16;
+const PIECES_COUNT = 25;
 const COLUMNS_COUNT = Math.sqrt(PIECES_COUNT);
+const ROW_HEIGHT = `${100/COLUMNS_COUNT}vw`;
 
 class Board extends Component {
   componentDidMount() {
@@ -11,11 +12,15 @@ class Board extends Component {
       '--columns-count',
       COLUMNS_COUNT,
     );
+    document.documentElement.style.setProperty(
+      '--row-height',
+      ROW_HEIGHT,
+    );
   }
 
   render() {
     return (
-      <section className={style.container}>
+      <section className={styles.board}>
         {Array.from(Array(PIECES_COUNT).keys()).map((piece, index) => (
           <Piece key={index} number={index} />
         ))}

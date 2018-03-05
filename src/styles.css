@@ -1,0 +1,13 @@
+:root {
+  --columns-count: 4;
+  --row-height: 25vw;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(var(--columns-count), 1fr);
+}
+
+.piece {
+  height: var(--row-height);
+}
